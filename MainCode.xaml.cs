@@ -188,6 +188,8 @@ namespace WoTB_Mod_installer_Remake
                 FSB_Convert.Visibility = Visibility.Hidden;
                 FSB_Extract_B.Visibility = Visibility.Hidden;
                 Volume_S.Visibility = Visibility.Hidden;
+                Zip_Mod_B.Visibility = Visibility.Hidden;
+                Directory_Mod_B.Visibility = Visibility.Hidden;
                 Mod_List.Visibility = Visibility.Visible;
             }
             else
@@ -208,6 +210,8 @@ namespace WoTB_Mod_installer_Remake
                     FSB_Convert.Visibility = Visibility.Visible;
                     FSB_Extract_B.Visibility = Visibility.Visible;
                     Sample_Voice_B.Visibility = Visibility.Visible;
+                    Zip_Mod_B.Visibility = Visibility.Visible;
+                    Directory_Mod_B.Visibility = Visibility.Visible;
                     Mod_List.Visibility = Visibility.Hidden;
                 }
                 Mod_List_Visible = false;
@@ -232,6 +236,8 @@ namespace WoTB_Mod_installer_Remake
                 BGM_Form_B.Visibility = Visibility.Visible;
                 FSB_Convert.Visibility = Visibility.Visible;
                 FSB_Extract_B.Visibility = Visibility.Visible;
+                Zip_Mod_B.Visibility = Visibility.Visible;
+                Directory_Mod_B.Visibility = Visibility.Visible;
             }
             Mod_List_Visible = false;
             Select_Mod_Name.Text = "選択されている音声Mod:" + Mod_List.SelectedItem;
@@ -379,6 +385,8 @@ namespace WoTB_Mod_installer_Remake
                         FSB_Extract_B.Visibility = Visibility.Hidden;
                         FSB_Convert.Visibility = Visibility.Hidden;
                         Cache_B.Visibility = Visibility.Hidden;
+                        Zip_Mod_B.Visibility = Visibility.Hidden;
+                        Directory_Mod_B.Visibility = Visibility.Hidden;
                         Task task2 = Task.Run(() =>
                         {
                             process.WaitForExit();
@@ -438,6 +446,8 @@ namespace WoTB_Mod_installer_Remake
                 FSB_Extract_B.Visibility = Visibility.Visible;
                 FSB_Convert.Visibility = Visibility.Visible;
                 Cache_B.Visibility = Visibility.Visible;
+                Zip_Mod_B.Visibility = Visibility.Visible;
+                Directory_Mod_B.Visibility = Visibility.Visible;
             }
         }
         WebClient webc;
