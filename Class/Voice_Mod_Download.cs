@@ -24,6 +24,8 @@ namespace WoTB_Mod_installer_Remake
             Exit_B.Visibility = Visibility.Hidden;
             Mod_Download_B.Visibility = Visibility.Hidden;
             Sample_Voice_B.Visibility = Visibility.Hidden;
+            Zip_Mod_B.Visibility = Visibility.Hidden;
+            Directory_Mod_B.Visibility = Visibility.Hidden;
             string URL = "";
             if (Select_Mod == "野良と皇女と野良猫ハート(黒木未知)")
             {
@@ -129,6 +131,8 @@ namespace WoTB_Mod_installer_Remake
             Exit_B.Visibility = Visibility.Visible;
             Mod_Download_B.Visibility = Visibility.Visible;
             Sample_Voice_B.Visibility = Visibility.Visible;
+            Zip_Mod_B.Visibility = Visibility.Hidden;
+            Directory_Mod_B.Visibility = Visibility.Hidden;
         }
         void Voice_Mod_Extract()
         {
