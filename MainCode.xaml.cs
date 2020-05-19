@@ -734,25 +734,21 @@ namespace WoTB_Mod_installer_Remake
                     }
                     else if (File_Name == "sfx_high.yaml")
                     {
-                        IsConfigs_File = true;
                         System.IO.File.Copy(File, WoTB_Path + "/Configs/Sfx/sfx_high.yaml", true);
                         System.IO.File.Delete(WoTB_Path + "/Configs/Sfx/sfx_high.yaml.dvpl");
                     }
                     else if (File_Name == "sfx_high.yaml.dvpl")
                     {
-                        IsConfigs_File = true;
                         System.IO.File.Copy(File, WoTB_Path + "/Configs/Sfx/sfx_high.yaml.dvpl", true);
                         System.IO.File.Delete(WoTB_Path + "/Configs/Sfx/sfx_high.yaml");
                     }
                     else if (File_Name == "sfx_low.yaml")
                     {
-                        IsConfigs_File = true;
                         System.IO.File.Copy(File, WoTB_Path + "/Configs/Sfx/sfx_low.yaml", true);
                         System.IO.File.Delete(WoTB_Path + "/Configs/Sfx/sfx_low.yaml.dvpl");
                     }
                     else if (File_Name == "sfx_low.yaml.dvpl")
                     {
-                        IsConfigs_File = true;
                         System.IO.File.Copy(File, WoTB_Path + "/Configs/Sfx/sfx_low.yaml.dvpl", true);
                         System.IO.File.Delete(WoTB_Path + "/Configs/Sfx/sfx_low.yaml");
                     }
