@@ -714,7 +714,6 @@ namespace WoTB_Mod_installer_Remake
             try
             {
                 bool IsSounds_File = false;
-                bool IsConfigs_File = false;
                 bool IsIngame_Voice_File = false;
                 string[] Files = Directory.GetFiles(Path_Temp + "/SRTTbacon/Select_Voice_Mod", "*", SearchOption.AllDirectories);
                 Sfx_High_Low_Exist();
