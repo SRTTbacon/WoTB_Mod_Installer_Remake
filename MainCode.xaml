@@ -26,6 +26,8 @@
         <ProgressBar x:Name="Download_Progress" HorizontalAlignment="Left" Height="15" Margin="515,136,0,0" VerticalAlignment="Top" Width="255" Visibility="Hidden" SmallChange="0" LargeChange="0"/>
         <Slider x:Name="Volume_S" HorizontalAlignment="Left" Margin="281,313,0,0" VerticalAlignment="Top" Width="195" SmallChange="1" Maximum="100" ValueChanged="Volume_S_ValueChanged"/>
         <Button x:Name="Backup_B" Content="バックアップから復元" HorizontalAlignment="Left" Margin="2,368,0,0" VerticalAlignment="Top" Width="195" Height="34" Foreground="Aqua" Background="Transparent" BorderBrush="Aqua" FontFamily="UD Digi Kyokasho N-B" FontSize="18" Click="Backup_B_Click"/>
+        <Button x:Name="Zip_Mod_B" Content="Zipファイルから選択" HorizontalAlignment="Left" Margin="499,148,0,0" VerticalAlignment="Top" Width="185" Height="33" Foreground="Aqua" Background="Transparent" BorderBrush="Aqua" FontFamily="UD Digi Kyokasho N-B" FontSize="18" Click="Zip_Mod_B_Click"/>
+        <Button x:Name="Directory_Mod_B" Content="フォルダから選択" HorizontalAlignment="Left" Margin="62,146,0,0" VerticalAlignment="Top" Width="185" Height="33" Foreground="Aqua" Background="Transparent" BorderBrush="Aqua" FontFamily="UD Digi Kyokasho N-B" FontSize="18" Click="Directory_Mod_B_Click"/>
 
     </Grid>
 </Window>

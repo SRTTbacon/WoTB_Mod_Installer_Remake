@@ -30,6 +30,11 @@ namespace WoTB_Mod_installer_Remake
             //起動直後
             InitializeComponent();
             MouseLeftButtonDown += (sender, e) => { DragMove(); };
+            if (!System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable())
+            {
+                MessageBox.Show("ネットワークに接続されていません。ソフトを強制終了します。");
+                Close();
+            }
             byte[] strm = Properties.Resources.SRTTbacon;
             List_Add();
             Directory.CreateDirectory(TempPath + "/SRTTbacon");
@@ -665,6 +670,191 @@ namespace WoTB_Mod_installer_Remake
                 catch
                 {
                     MessageBox.Show("エラー:バックアップファイルが存在しない可能性があります。");
+                }
+            }
+        }
+        private void Zip_Mod_B_Click(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Forms.OpenFileDialog ofd = new System.Windows.Forms.OpenFileDialog();
+            ofd.Title = "音声Modのzipファイルを選択してください。";
+            ofd.Multiselect = false;
+            ofd.Filter = "Zipファイル(*.zip)|*.zip";
+            if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                if (Directory.Exists(Path_Temp + "/SRTTbacon/Select_Voice_Mod"))
+                {
+                    Directory.Delete(Path_Temp + "/SRTTbacon/Select_Voice_Mod", true);
+                }
+                Directory.CreateDirectory(Path_Temp + "/SRTTbacon/Select_Voice_Mod");
+                Task task = Task.Run(() =>
+                {
+                    System.IO.Compression.ZipFile.ExtractToDirectory(ofd.FileName, Path_Temp + "/SRTTbacon/Select_Voice_Mod");
+                });
+                task.Wait();
+                Choice_Voice_Mod();
+            }
+        }
+        private void Directory_Mod_B_Click(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Forms.FolderBrowserDialog fbd = new System.Windows.Forms.FolderBrowserDialog();
+            fbd.Description = "音声Modがあるフォルダを選んでください。";
+            if (fbd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                if (Directory.Exists(Path_Temp + "/SRTTbacon/Select_Voice_Mod"))
+                {
+                    Directory.Delete(Path_Temp + "/SRTTbacon/Select_Voice_Mod", true);
+                }
+                Directory.CreateDirectory(Path_Temp + "/SRTTbacon/Select_Voice_Mod");
+                Microsoft.VisualBasic.FileIO.FileSystem.CopyDirectory(fbd.SelectedPath, Path_Temp + "/SRTTbacon/Select_Voice_Mod");
+                Choice_Voice_Mod();
+            }
+        }
+        void Choice_Voice_Mod()
+        {
+            try
+            {
+                bool IsSounds_File = false;
+                bool IsConfigs_File = false;
+                bool IsIngame_Voice_File = false;
+                string[] Files = Directory.GetFiles(Path_Temp + "/SRTTbacon/Select_Voice_Mod", "*", SearchOption.AllDirectories);
+                Sfx_High_Low_Exist();
+                foreach (string File in Files)
+                {
+                    string File_Name = System.IO.Path.GetFileName(File);
+                    if (File_Name == "sounds.yaml")
+                    {
+                        IsSounds_File = true;
+                        System.IO.File.Copy(File, WoTB_Path + "/sounds.yaml", true);
+                        System.IO.File.Delete(WoTB_Path + "/sounds.yaml.dvpl");
+                    }
+                    else if (File_Name == "sounds.yaml.dvpl")
+                    {
+                        IsSounds_File = true;
+                        System.IO.File.Copy(File, WoTB_Path + "/sounds.yaml.dvpl", true);
+                        System.IO.File.Delete(WoTB_Path + "/sounds.yaml");
+                    }
+                    else if (File_Name == "sfx_high.yaml")
+                    {
+                        IsConfigs_File = true;
+                        System.IO.File.Copy(File, WoTB_Path + "/Configs/Sfx/sfx_high.yaml", true);
+                        System.IO.File.Delete(WoTB_Path + "/Configs/Sfx/sfx_high.yaml.dvpl");
+                    }
+                    else if (File_Name == "sfx_high.yaml.dvpl")
+                    {
+                        IsConfigs_File = true;
+                        System.IO.File.Copy(File, WoTB_Path + "/Configs/Sfx/sfx_high.yaml.dvpl", true);
+                        System.IO.File.Delete(WoTB_Path + "/Configs/Sfx/sfx_high.yaml");
+                    }
+                    else if (File_Name == "sfx_low.yaml")
+                    {
+                        IsConfigs_File = true;
+                        System.IO.File.Copy(File, WoTB_Path + "/Configs/Sfx/sfx_low.yaml", true);
+                        System.IO.File.Delete(WoTB_Path + "/Configs/Sfx/sfx_low.yaml.dvpl");
+                    }
+                    else if (File_Name == "sfx_low.yaml.dvpl")
+                    {
+                        IsConfigs_File = true;
+                        System.IO.File.Copy(File, WoTB_Path + "/Configs/Sfx/sfx_low.yaml.dvpl", true);
+                        System.IO.File.Delete(WoTB_Path + "/Configs/Sfx/sfx_low.yaml");
+                    }
+                    else if (File_Name.Contains(".fsb") || File_Name.Contains(".fev"))
+                    {
+                        Directory.CreateDirectory(WoTB_Path + "/Mods");
+                        System.IO.File.Copy(File, WoTB_Path + "/Mods/" + File_Name, true);
+                    }
+                    if (File_Name.Contains("ingame_voice") && !File_Name.Contains(".fev"))
+                    {
+                        IsIngame_Voice_File = true;
+                        StreamReader str = new StreamReader(WoTB_Path + "/Configs/Sfx/sfx_high.yaml");
+                        string str2 = str.ReadToEnd().Replace("~res:/Sfx/ingame_voice.fev", "~res:/Mods/ingame_voice.fev");
+                        str.Close();
+                        StreamReader str3 = new StreamReader(WoTB_Path + "/Configs/Sfx/sfx_high.yaml");
+                        string str4 = str3.ReadToEnd().Replace("~res:/Sfx/ingame_voice_low.fev", "~res:/Mods/ingame_voice_low.fev");
+                        str3.Close();
+                        StreamWriter stw = System.IO.File.CreateText(WoTB_Path + "/Configs/Sfx/sfx_high.yaml");
+                        stw.Write(str2);
+                        stw.Close();
+                        StreamWriter stw2 = new StreamWriter(WoTB_Path + "/Configs/Sfx/sfx_low.yaml");
+                        stw2.Write(str4);
+                        stw2.Close();
+                    }
+                }
+                if (IsIngame_Voice_File == true)
+                {
+                    if (File.Exists(WoTB_Path + "/Sfx/ingame_voice.fev.dvpl"))
+                    {
+                        File.Copy(WoTB_Path + "/Sfx/ingame_voice.fev.dvpl", WoTB_Path + "/Mods/ingame_voice.fev.dvpl", true);
+                        File.Copy(WoTB_Path + "/Sfx/ingame_voice_low.fev.dvpl", WoTB_Path + "/Mods/ingame_voice_low.fev.dvpl", true);
+                    }
+                    else if (File.Exists(WoTB_Path + "/Sfx/ingame_voice.fev"))
+                    {
+                        File.Copy(WoTB_Path + "/Sfx/ingame_voice.fev", WoTB_Path + "/Mods/ingame_voice.fev", true);
+                        File.Copy(WoTB_Path + "/Sfx/ingame_voice_low.fev", WoTB_Path + "/Mods/ingame_voice_low.fev", true);
+                    }
+                    else
+                    {
+                        MessageBox.Show("WoTBフォルダ内にingame_voice.fevファイルが存在しません。\nMod内にfevファイルがあればこのエラーは出ません。");
+                    }
+                }
+                if (IsSounds_File == false)
+                {
+                    Uri uri = new Uri("https://www.dropbox.com/s/0sw6kivbmguyn5m/sounds.yaml.dvpl?dl=1");
+                    if (wc == null)
+                    {
+                        wc = new WebClient();
+                        wc.DownloadFileCompleted += delegate
+                        {
+                            File.Copy(Path_Temp + "/SRTTbacon/sounds.yaml.dvpl", WoTB_Path + "/sounds.yaml.dvpl", true);
+                            File.Delete(Path_Temp + "/SRTTbacon/sounds.yaml.dvpl");
+                            File.Delete(WoTB_Path + "/sounds.yaml");
+                        };
+                    }
+                    wc.DownloadFileAsync(uri, TempPath + "/SRTTbacon/sounds.yaml.dvpl");
+                }
+                MessageBox.Show("導入されました。");
+            }
+            catch
+            {
+                MessageBox.Show("エラーが発生しました。開発者へご連絡ください。");
+            }
+        }
+        void Sfx_High_Low_Exist()
+        {
+            //WoTB内にdvpl形式の.yamlファイルがあればdvpl化を解除して保存する
+            if (File.Exists(WoTB_Path + "/Configs/Sfx/sfx_high.yaml.dvpl") || File.Exists(WoTB_Path + "/Configs/Sfx/sfx_low.yaml.dvpl") || File.Exists(WoTB_Path + "/sounds.yaml.dvpl"))
+            {
+                if (File.Exists(WoTB_Path + "/Configs/Sfx/sfx_high.yaml.dvpl"))
+                {
+                    File.Copy(WoTB_Path + "/Configs/Sfx/sfx_high.yaml.dvpl", TempPath + "/SRTTbacon/DVPL_Extract/Resources_Out/sfx_high.yaml", true);
+                }
+                if (File.Exists(WoTB_Path + "/Configs/Sfx/sfx_low.yaml.dvpl"))
+                {
+                    File.Copy(WoTB_Path + "/Configs/Sfx/sfx_low.yaml.dvpl", TempPath + "/SRTTbacon/DVPL_Extract/Resources_Out/sfx_low.yaml", true);
+                }
+                if (File.Exists(WoTB_Path + "/sounds.yaml.dvpl"))
+                {
+                    File.Copy(WoTB_Path + "/sounds.yaml.dvpl", TempPath + "/SRTTbacon/DVPL_Extract/Resources_Out/sounds.yaml", true);
+                }
+                var startInfo = new ProcessStartInfo();
+                startInfo.FileName = TempPath + "/SRTTbacon/DVPL_Extract/Resources_UnPack.bat";
+                startInfo.UseShellExecute = false;
+                startInfo.CreateNoWindow = true;
+                startInfo.WorkingDirectory = System.IO.Path.GetTempPath() + "/SRTTbacon/DVPL_Extract";
+                var process = Process.Start(startInfo);
+                process.WaitForExit();
+                string[] Files = Directory.GetFiles(TempPath + "/SRTTbacon/DVPL_Extract/Resources", "*", SearchOption.TopDirectoryOnly);
+                foreach (string File in Files)
+                {
+                    if (System.IO.Path.GetFileName(File).Contains("sfx_high.yaml") || System.IO.Path.GetFileName(File).Contains("sfx_low.yaml"))
+                    {
+                        System.IO.File.Copy(File, WoTB_Path + "/Configs/Sfx/" + System.IO.Path.GetFileName(File), true);
+                        System.IO.File.Delete(WoTB_Path + "/Configs/Sfx/" + System.IO.Path.GetFileName(File) + ".dvpl");
+                    }
+                    else if (System.IO.Path.GetFileName(File).Contains("sounds.yaml"))
+                    {
+                        System.IO.File.Copy(File, WoTB_Path + "/" + System.IO.Path.GetFileName(File), true);
+                        System.IO.File.Delete(WoTB_Path + "/" + System.IO.Path.GetFileName(File) + ".dvpl");
+                    }
                 }
             }
         }
