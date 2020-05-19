@@ -1,0 +1,22 @@
+﻿<Window x:Class="WoTB_Mod_installer_Remake.Class.Other"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:winForms="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WoTB_Mod_installer_Remake.Class"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen" 
+        Title="WoTB_Mod_installer_Remake" Height="450" Width="800"
+        AllowsTransparency="True" 
+        Background="#66183764"
+        WindowStyle="None">
+    <Grid>
+        <Button x:Name="Back_B" Content="戻る" HorizontalAlignment="Left" Margin="0,408,0,0" VerticalAlignment="Top" Width="175" RenderTransformOrigin="0.311,0.314" Foreground="Aqua" Background="Transparent" BorderBrush="Aqua" FontFamily="UD Digi Kyokasho N-B" FontSize="22" Height="42" Click="Back_B_Click"/>
+        <Button x:Name="Exit_B" Content="終了" HorizontalAlignment="Left" Margin="622,408,0,0" VerticalAlignment="Top" Width="178" RenderTransformOrigin="0.311,0.314" Foreground="Aqua" Background="Transparent" BorderBrush="Aqua" FontFamily="UD Digi Kyokasho N-B" FontSize="22" Height="42" Click="Exit_B_Click"/>
+        <Button x:Name="Music_Player_B" Content="音楽プレイヤー" HorizontalAlignment="Left" Margin="243,57,0,0" VerticalAlignment="Top" Width="305" Height="51" Background="Transparent" Foreground="Aqua" BorderBrush="Aqua" FontFamily="UD Digi Kyokasho N-B" FontSize="22" Click="Music_Player_B_Click"/>
+        <Button x:Name="Video_Player_B" Content="動画プレイヤー" HorizontalAlignment="Left" Margin="243,141,0,0" VerticalAlignment="Top" Width="305" Height="51" Background="Transparent" Foreground="Aqua" BorderBrush="Aqua" FontFamily="UD Digi Kyokasho N-B" FontSize="22" Click="Video_Player_B_Click"/>
+        <Button x:Name="Source_Code_B" Content="ソースコード" HorizontalAlignment="Left" Margin="243,227,0,0" VerticalAlignment="Top" Width="305" Height="51" Background="Transparent" Foreground="Aqua" BorderBrush="Aqua" FontFamily="UD Digi Kyokasho N-B" FontSize="22" Click="Source_Code_B_Click"/>
+
+    </Grid>
+</Window>

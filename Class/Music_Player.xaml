@@ -1,0 +1,53 @@
+﻿<Window x:Class="WoTB_Mod_installer_Remake.Class.Music_Player"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:winForms="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WoTB_Mod_installer_Remake.Class"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen" 
+        Title="WoTB_Mod_installer_Remake" Height="450" Width="800"
+        AllowsTransparency="True" 
+        Background="#66183764"
+        WindowStyle="None" Closed="Window_Closed">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="200"/>
+        </Grid.RowDefinitions>
+        <Menu x:Name="menu" Background="#90104076" HorizontalAlignment="Left" Height="257" Margin="284,104,0,0" VerticalAlignment="Top" Width="236" Grid.RowSpan="2">
+            <ListView x:Name="listView" Background="Transparent" Foreground="Aqua" SelectionChanged="listView_SelectionChanged" Height="267" Width="225" Margin="0,-22,0,0">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <TextBlock x:Name="textBlock" Background="#90104076" TextWrapping="Wrap" FontSize="20" Height="243" Width="226" d:IsHidden="True"/>
+        </Menu>
+        <TextBlock x:Name="textBlock6" HorizontalAlignment="Left" Margin="5,127,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="Aqua" FontSize="22" FontFamily="Kalam" FontWeight="Bold" Grid.Row="1"><Run Text="V1.1" Foreground="Aqua"/><LineBreak/><Run Text="Created By SRTTbacon" Foreground="Aqua"/></TextBlock>
+        <Label x:Name="Pitch_label" Content="44100Hz" HorizontalAlignment="Left" Margin="354,60,0,0" VerticalAlignment="Top" Foreground="Aqua" FontSize="20" Width="100" Height="35"/>
+        <Slider x:Name="slider" HorizontalAlignment="Left" Margin="274,42,0,0" VerticalAlignment="Top" Width="259" TickFrequency="0" SmallChange="0" LargeChange="0"/>
+        <TextBlock x:Name="label" Text="ピッチ" Margin="263,10,280,0" VerticalAlignment="Top" Foreground="Aqua" RenderTransformOrigin="0.5,0.5" FontSize="20" Height="22" FontFamily="UD Digi Kyokasho N-B" TextAlignment="Center"/>
+        <Slider x:Name="slider1" HorizontalAlignment="Left" Margin="10,104,0,0" VerticalAlignment="Top" Width="216"/>
+        <Label x:Name="label1" Content="音量" HorizontalAlignment="Left" Margin="86,70,0,0" VerticalAlignment="Top" Foreground="Aqua" RenderTransformOrigin="0.5,0.5" FontSize="20" FontWeight="Bold" Width="50" Height="34"/>
+        <Button x:Name="button" Content="フォルダ選択" HorizontalAlignment="Left" Margin="599,158,0,0" VerticalAlignment="Top" Width="191" RenderTransformOrigin="0.479,0.559" FontSize="20" FontWeight="Bold" Click="button_Click" Height="40" Background="Transparent" Foreground="Aqua" BorderBrush="Aqua"/>
+        <Button x:Name="button1" Content="ピッチを戻す" HorizontalAlignment="Left" Margin="301,150,0,0" VerticalAlignment="Top" Width="204" Grid.Row="1" FontSize="20" FontWeight="Bold" Click="button1_Click" Background="Transparent" Foreground="Aqua" BorderBrush="Aqua" Height="40"/>
+        <TextBlock x:Name="label2" Text="75" HorizontalAlignment="Left" Margin="72,121,0,0" VerticalAlignment="Top" Foreground="Aqua" RenderTransformOrigin="0.5,0.5" FontSize="20" FontWeight="Bold" Width="83" Height="34" TextAlignment="Center" />
+        <Slider x:Name="slider2" HorizontalAlignment="Left" Margin="29,203,0,0" VerticalAlignment="Top" Width="171"/>
+        <Label x:Name="label4" Content="位置" HorizontalAlignment="Left" Margin="96,155,0,0" VerticalAlignment="Top" Foreground="Aqua" RenderTransformOrigin="0.5,0.5" FontSize="20" FontWeight="Bold" Width="50" Height="43"/>
+        <TextBlock x:Name="label5" Text="0" HorizontalAlignment="Left" Margin="39,226,0,0" VerticalAlignment="Top" Foreground="Aqua" RenderTransformOrigin="0.5,0.5" FontSize="20" FontWeight="Bold" Width="151" Height="34" Grid.RowSpan="2" TextAlignment="Center"/>
+        <Button x:Name="button2" Content="スキップ" HorizontalAlignment="Left" Margin="599,210,0,0" VerticalAlignment="Top" Width="191" FontSize="20" FontWeight="Bold" Click="button2_Click" Height="40" Background="Transparent" Foreground="Aqua" BorderBrush="Aqua"/>
+        <CheckBox x:Name="checkBox" Content="CheckBox" HorizontalAlignment="Left" Margin="56,67,0,0" Grid.Row="1" VerticalAlignment="Top" Width="19"/>
+        <Label x:Name="Check_label" Content="ランダム再生" HorizontalAlignment="Left" Margin="75,55,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="20" Foreground="Aqua"/>
+        <Button x:Name="Close_B" Content="終了" HorizontalAlignment="Left" Margin="644,150,0,0" Grid.Row="1" VerticalAlignment="Top" Width="146" FontSize="20" FontWeight="Bold" Click="Close_B_Click" Height="40" Background="Transparent" Foreground="Aqua" BorderBrush="Aqua"/>
+        <Button x:Name="Minus_B" Content="-10" HorizontalAlignment="Left" Margin="20,163,0,0" VerticalAlignment="Top" Width="76" FontSize="18" Click="Minus_B_Click" Background="Transparent" Foreground="Aqua" BorderBrush="Aqua"/>
+        <Button x:Name="button3" Content="+10" HorizontalAlignment="Left" Margin="150,163,0,0" VerticalAlignment="Top" Width="76" RenderTransformOrigin="0.5,0.5" Height="28" FontSize="18" Click="button3_Click" Background="Transparent" Foreground="Aqua" BorderBrush="Aqua"/>
+        <Button x:Name="button4" Content="ファイル選択" HorizontalAlignment="Left" Margin="599,14,0,0" VerticalAlignment="Top" Width="191" Height="40" FontSize="20" FontWeight="Bold" Click="button4_Click" Background="Transparent" Foreground="Aqua" BorderBrush="Aqua"/>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="24" Margin="39,18,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="161" FontSize="16" PreviewTextInput="uxMynumber_PreviewTextInput" Background="White"/>
+        <Button x:Name="Pitch_B" Content="確定" HorizontalAlignment="Left" Margin="52,42,0,0" VerticalAlignment="Top" Width="120" FontSize="18" FontWeight="Bold" Click="Pitch_B_Click" Background="Transparent" Foreground="Aqua" BorderBrush="Aqua"/>
+        <Button x:Name="Stop_B" Content="停止" HorizontalAlignment="Left" Margin="20,15,0,0" Grid.Row="1" VerticalAlignment="Top" Width="91" FontSize="20" FontWeight="Bold" Click="Stop_B_Click" Background="Transparent" Foreground="Aqua" BorderBrush="Aqua"/>
+        <Button x:Name="Play_B" Content="再生" HorizontalAlignment="Left" Margin="116,15,0,0" Grid.Row="1" VerticalAlignment="Top" Width="91" FontSize="20" FontWeight="Bold" Click="Play_B_Click" Background="Transparent" Foreground="Aqua" BorderBrush="Aqua"/>
+    </Grid>
+</Window>

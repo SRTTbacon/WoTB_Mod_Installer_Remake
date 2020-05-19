@@ -1,0 +1,31 @@
+﻿<Window x:Class="WoTB_Mod_installer_Remake.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:winForms="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WoTB_Mod_installer_Remake"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen" 
+        Title="WoTB_Mod_installer_Remake" Height="450" Width="800"
+        AllowsTransparency="True" 
+        Background="#66183764"
+        WindowStyle="None">
+    <Grid>
+        <Button x:Name="Exit_B" Content="終了" HorizontalAlignment="Left" Margin="668,405,0,0" VerticalAlignment="Top" Width="129" Background="Transparent" Foreground="Aqua" BorderBrush="Aqua" Height="42" FontFamily="UD Digi Kyokasho N-B" FontSize="24" Click="Exit_B_Click"/>
+        <Button x:Name="Mod_Install_B" Content="音声Mod一覧" HorizontalAlignment="Left" Margin="265,98,0,0" VerticalAlignment="Top" Width="211" Background="Transparent" Foreground="Aqua" BorderBrush="Aqua" Height="42" FontFamily="UD Digi Kyokasho N-B" FontSize="24" Click="Mod_Install_B_Click" />
+        <ListBox x:Name="Mod_List" HorizontalAlignment="Left" Height="355" Margin="481,29,0,0" VerticalAlignment="Top" Width="259" Background="Transparent" Foreground="Aqua" BorderBrush="Aqua" Visibility="Hidden" FontFamily="UD Digi Kyokasho N-B" FontSize="16" SelectionChanged="Mod_List_SelectionChanged"/>
+        <TextBlock x:Name="Select_Mod_Name" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="Aqua" FontFamily="UD Digi Kyokasho N-B" FontSize="24" TextAlignment="Center" Width="401" Height="83"><Run Text="選択されている音声Mod:"/></TextBlock>
+        <Button x:Name="Mod_Download_B" Content="Modのダウンロード/インストール" HorizontalAlignment="Left" Margin="165,207,0,0" VerticalAlignment="Top" Width="391" Background="Transparent" Foreground="Aqua" BorderBrush="Aqua" Height="56" FontFamily="UD Digi Kyokasho N-B" FontSize="24" Click="Mod_Download_B_Click"  />
+        <ProgressBar x:Name="Download_P" HorizontalAlignment="Left" Height="13" Margin="208,168,0,0" VerticalAlignment="Top" Width="304" Visibility="Hidden"/>
+        <Button x:Name="Sample_Voice_B" Content="サンプル音声" HorizontalAlignment="Left" Margin="265,148,0,0" VerticalAlignment="Top" Width="211" Height="33" Foreground="Aqua" Background="Transparent" BorderBrush="Aqua" FontFamily="UD Digi Kyokasho N-B" FontSize="24" Click="Sample_Voice_B_Click"/>
+        <Button x:Name="BGM_Form_B" Content="BGMMod一覧画面へ" HorizontalAlignment="Left" Margin="260,376,0,0" VerticalAlignment="Top" Width="233" Foreground="Aqua" Background="Transparent" BorderBrush="Aqua" FontFamily="UD Digi Kyokasho N-B" FontSize="22" Height="45" Click="BGM_Form_B_Click"/>
+        <Button x:Name="FSB_Extract_B" Content="FSBファイルから音声を抽出" HorizontalAlignment="Left" Margin="499,10,0,0" VerticalAlignment="Top" Width="291" Foreground="Aqua" Background="Transparent" BorderBrush="Aqua" FontFamily="UD Digi Kyokasho N-B" FontSize="22" Height="50" Click="FSB_Extract_B_Click"/>
+        <Button x:Name="FSB_Convert" Content="音声をFSBに変換" HorizontalAlignment="Left" Margin="499,73,0,0" VerticalAlignment="Top" Width="291" Height="45" Foreground="Aqua" Background="Transparent" BorderBrush="Aqua" FontFamily="UD Digi Kyokasho N-B" FontSize="22" Click="FSB_Convert_Click"/>
+        <Button x:Name="Cache_B" Content="キャッシュを削除" HorizontalAlignment="Left" VerticalAlignment="Top" Width="195" Margin="2,414,0,0" FontFamily="UD Digi Kyokasho N-B" FontSize="22" Foreground="Aqua" Background="Transparent" BorderBrush="Aqua" Height="33" Click="Cache_B_Click"/>
+        <ProgressBar x:Name="Download_Progress" HorizontalAlignment="Left" Height="15" Margin="515,136,0,0" VerticalAlignment="Top" Width="255" Visibility="Hidden" SmallChange="0" LargeChange="0"/>
+        <Slider x:Name="Volume_S" HorizontalAlignment="Left" Margin="281,313,0,0" VerticalAlignment="Top" Width="195" SmallChange="1" Maximum="100" ValueChanged="Volume_S_ValueChanged"/>
+        <Button x:Name="Backup_B" Content="バックアップから復元" HorizontalAlignment="Left" Margin="2,368,0,0" VerticalAlignment="Top" Width="195" Height="34" Foreground="Aqua" Background="Transparent" BorderBrush="Aqua" FontFamily="UD Digi Kyokasho N-B" FontSize="18" Click="Backup_B_Click"/>
+
+    </Grid>
+</Window>
