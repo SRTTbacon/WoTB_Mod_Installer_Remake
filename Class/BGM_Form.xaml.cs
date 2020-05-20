@@ -349,7 +349,7 @@ namespace WoTB_Mod_installer_Remake.Class
             }
             sr3.Close();
             stw3.Close();
-            File.Delete(WoTB_Path + "/sounds.yaml");
+            File.Delete(WoTB_Path + "/sounds1.yaml");
             Sample_BGM_B.Visibility = Visibility.Visible;
             Back_B.Visibility = Visibility.Visible;
             Exit_B.Visibility = Visibility.Visible;
