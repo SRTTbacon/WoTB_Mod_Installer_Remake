@@ -332,7 +332,7 @@ namespace WoTB_Mod_installer_Remake.Class
             File.Move(WoTB_Path + "/sounds.yaml", WoTB_Path + "/sounds1.yaml");
             string Line_Temp = "";
             StreamWriter stw3 = File.CreateText(WoTB_Path + "/sounds.yaml");
-            StreamReader sr3 = new StreamReader(WoTB_Path + "/sounds1.yaml", System.Text.Encoding.GetEncoding("SHIFT_JIS"));
+            StreamReader sr3 = new StreamReader(WoTB_Path + "/sounds1.yaml", System.Text.Encoding.GetEncoding("UTF-8"));
             while (sr3.EndOfStream == false)
             {
                 string line = sr3.ReadLine();
@@ -575,7 +575,7 @@ namespace WoTB_Mod_installer_Remake.Class
                             File.Move(WoTB_Path + "/sounds.yaml", WoTB_Path + "/sounds1.yaml");
                             string Line_Temp = "";
                             StreamWriter stw3 = File.CreateText(WoTB_Path + "/sounds.yaml");
-                            StreamReader sr3 = new StreamReader(WoTB_Path + "/sounds1.yaml", System.Text.Encoding.GetEncoding("SHIFT_JIS"));
+                            StreamReader sr3 = new StreamReader(WoTB_Path + "/sounds1.yaml", System.Text.Encoding.GetEncoding("UTF-8"));
                             while (sr3.EndOfStream == false)
                             {
                                 string line = sr3.ReadLine();
